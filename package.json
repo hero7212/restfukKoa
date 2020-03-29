@@ -1,0 +1,14 @@
+{
+  "name": "zhihu-api",
+  "version": "1.0.0",
+  "description": "防知乎 RESTful API",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "labnize",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.11.0"
+  }
+}
