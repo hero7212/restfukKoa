@@ -1,10 +1,11 @@
 const Koa = require('koa')
+const bodyparser = require('koa-bodyparser')
 const Router = require('koa-router')
 const app = new Koa()
 const router = new Router()
 const usersRouter = new Router({prefix: '/users'})
 
-router.get('/', () => {
+router.get('/', (ctx) => {
     ctx.body = '这是主页'
 })
 
@@ -13,7 +14,7 @@ usersRouter.get('/', (ctx) => {
 })
 
 usersRouter.post('/', (ctx) => {
-    ctx.body = '创建用户'
+    ctx.body = {name: '李雷'}
 })
 
 usersRouter.get('/:id', (ctx) => {
@@ -28,6 +29,7 @@ usersRouter.delete('/:id', (ctx) => {
     ctx.status = 204
 })
 
+app.use(usersRouter.routes())
 app.use(router.routes())
 app.use(usersRouter.routes())
 app.use(usersRouter.allowedMethods())
