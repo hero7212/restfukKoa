@@ -1,4 +1,5 @@
 const Topic = require('../models/topics')
+const User = require('../models/users')
 
 class TopicsCtl {
     async find(ctx) {
@@ -37,6 +38,10 @@ class TopicsCtl {
         })
         const topic = await Topic.findByIdAndUpdate(ctx.params.id, ctx.request.body)
         ctx.body = topic
+    }
+    async listFollowers(ctx) {
+        const users = await User.find({ followingTopics: ctx.params.id })
+        ctx.body = users
     }
 }
 
